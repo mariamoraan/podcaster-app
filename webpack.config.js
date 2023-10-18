@@ -53,7 +53,8 @@ module.exports = (env, {mode}) => {
         resolve: {
             extensions: ['.tsx', '.ts', '.js', '.jsx'],
             alias: {
-
+                "common": path.resolve(__dirname, 'src/common'),
+                "top_podcasts": path.resolve(__dirname, 'src/top_podcasts'),
             },
         },
         module: {
