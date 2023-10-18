@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { buildPodcastDetailPath } from 'routes';
 import styled from "styled-components";
 
 const IMAGE_HEIGHT = 120;
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
     position: relative;
     padding-top: calc(24px + ${IMAGE_HEIGHT/2}px);
     text-decoration: none;
@@ -49,7 +51,7 @@ export const PodcastCard = (props: Props) => {
     const {title, author, imageUrl, id} = props;
 
     return (
-        <Wrapper>
+        <Wrapper to={buildPodcastDetailPath(id)}>
             <Image src={imageUrl} />
             <DataWrapper>
                 <Title>{title}</Title>

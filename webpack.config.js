@@ -54,7 +54,10 @@ module.exports = (env, {mode}) => {
             extensions: ['.tsx', '.ts', '.js', '.jsx'],
             alias: {
                 "common": path.resolve(__dirname, 'src/common'),
+                "routes": path.resolve(__dirname, 'src/routes'),
                 "top_podcasts": path.resolve(__dirname, 'src/top_podcasts'),
+                "podcast_detail": path.resolve(__dirname, 'src/podcast_detail'),
+                "episode_detail": path.resolve(__dirname, 'src/episode_detail'),
             },
         },
         module: {
