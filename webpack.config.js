@@ -22,6 +22,12 @@ const jsRule = {
     exclude: /node_modules/,
     use: {
         loader: 'babel-loader',
+        options: {
+            presets: [
+                ['@babel/preset-env', {targets: {node: 'current'}}],
+                '@babel/preset-typescript',
+            ]
+        }
     },
 }
 
@@ -67,7 +73,7 @@ module.exports = (env, {mode}) => {
                 cssRule,
                 filesRule,
                 svgRule
-            ]
+            ],
         },
         plugins: [
             htmlWebpackPlugin,

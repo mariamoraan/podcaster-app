@@ -1,26 +1,16 @@
-import { olderThan24Hours } from 'common/utils/dates';
 import { useEffect, useState } from 'react';
 import { Entry } from 'top_podcasts/models';
-import { fetchTop100Songs, getLocalStoragePodcasts, saveLocalStoragePodcasts } from 'top_podcasts/services';
+import { getTop100Podcasts } from 'top_podcasts/services';
 
 export const useGetTop100Podcasts = () => {
     const [podcasts, setPodcasts] = useState<Entry[]>([])
     useEffect(() => {
-        const fetchPodcasts = async() => {
-            const fetchedPodcasts = await fetchTop100Songs()
-            setPodcasts(fetchedPodcasts)
-            saveLocalStoragePodcasts(fetchedPodcasts)
+        const getPodcasts = async() => {
+            const podcasts = await getTop100Podcasts()
+            setPodcasts(podcasts)
         }
 
-        const localPodcasts = getLocalStoragePodcasts();
-
-        if (localPodcasts) {
-            if(!olderThan24Hours(localPodcasts.timestamp)) {
-                setPodcasts(localPodcasts.podcasts)
-                return
-            }
-        } 
-        fetchPodcasts()
+        getPodcasts()
     }, [])
 
     return {podcasts, setPodcasts}

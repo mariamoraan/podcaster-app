@@ -1,8 +1,9 @@
+import { olderThan24Hours } from "common/utils/dates";
 import { makeGetRequest } from "common/utils/querys";
 import { LAST_REQUEST_PODCASTS } from "top_podcasts/constants";
 import { Entry, VideoPost } from "top_podcasts/models/index";
 
-export const fetchTop100Songs = async(loc: string = 'us', limit: number = 100): Promise<Entry[]> => {
+export const fetchTop100Podcasts = async(loc: string = 'us', limit: number = 100): Promise<Entry[]> => {
     const url = `https://itunes.apple.com/${loc}/rss/toppodcasts/limit=${limit}/json`;
     try {
         const data: VideoPost = await makeGetRequest(url);
@@ -25,4 +26,15 @@ export const saveLocalStoragePodcasts = (podcasts: Entry[]) => {
         timestamp: Date.now(),
         podcasts: podcasts
     }))
+}
+
+export const getTop100Podcasts = async(loc: string = 'us', limit: number = 100): Promise<Entry[]> => {
+    const localPodcasts = getLocalStoragePodcasts();
+    if (localPodcasts && !olderThan24Hours(localPodcasts.timestamp)) {
+        return localPodcasts.podcasts
+    } else {
+        const podcasts = await fetchTop100Podcasts(loc, limit)
+        saveLocalStoragePodcasts(podcasts)
+        return podcasts
+    }
 }

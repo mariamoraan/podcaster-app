@@ -4,7 +4,7 @@ import React from "react";
 import {
     Route,
     BrowserRouter as Router,
-    Routes,
+    Routes
 } from "react-router-dom";
 import { EPISODE_DETAIL, PODCAST_DETAIL, POPULAR_PODCASTS } from "routes";
 import PopularPodcasts from "top_podcasts/components";
