@@ -1,5 +1,5 @@
-import { Layout } from 'common/components/Layout/Layout';
 import { LateralBar } from 'common/components/lateral_bar/LateralBar';
+import { Layout } from 'common/components/layout/Layout';
 import { usePodcastDetails } from 'podcast_detail/hooks';
 import { IEpisode } from 'podcast_detail/models';
 import React from 'react';

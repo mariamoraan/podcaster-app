@@ -1,5 +1,5 @@
-import { Layout } from "common/components/Layout/Layout"
 import { LateralBar } from "common/components/lateral_bar/LateralBar"
+import { Layout } from "common/components/layout/Layout"
 import { useGetEpisodeDetails } from "episode_detail/hooks"
 import React from 'react'
 import { useParams } from 'react-router-dom'
