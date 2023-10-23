@@ -38,7 +38,17 @@ const cssRule = {
 
 const filesRule = {
     test: /\.(png|jp(e*)g|gif|webp|avif)$/,
-    use: ['file-loader'],
+    use: [
+        'file-loader',
+        {
+            loader: 'image-webpack-loader',
+            options: {
+                bypassOnNotFound: true,
+                outputPath: path.join(__dirname, 'dist', 'images.bundle.js'),
+                minimize: true,
+            }
+        }
+    ],
 }
 
 const svgRule = {
@@ -57,6 +67,8 @@ module.exports = (env, {mode}) => {
         mode,
         entry: path.join(__dirname, 'src', 'index.tsx'),
         output: {
+            filename: 'bundle.js',
+            path: path.resolve(__dirname, 'dist'),
             publicPath: '/',
         },
         resolve: {
@@ -82,7 +94,7 @@ module.exports = (env, {mode}) => {
             htmlWebpackPlugin,
             new webpack.ProvidePlugin({
                 "React":     "react"
-            })
+            }),
         ],
         devServer: {
             host: 'localhost',
