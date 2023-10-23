@@ -4,9 +4,9 @@ import { LAST_REQUEST_PODCASTS } from "top_podcasts/constants";
 import { Entry, VideoPost } from "top_podcasts/models/index";
 
 export const fetchTop100Podcasts = async(loc: string = 'us', limit: number = 100): Promise<Entry[]> => {
-    const url = `https://itunes.apple.com/${loc}/rss/toppodcasts/limit=${limit}/json`;
+    const URL = `https://itunes.apple.com/${loc}/rss/toppodcasts/limit=${limit}/json`;
     try {
-        const data: VideoPost = await makeGetRequest(url);
+        const data: VideoPost = await makeGetRequest(URL);
         return data.feed.entry;
     } catch(error) {
         console.error(error)

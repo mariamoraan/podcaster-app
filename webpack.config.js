@@ -56,6 +56,9 @@ module.exports = (env, {mode}) => {
     return {
         mode,
         entry: path.join(__dirname, 'src', 'index.tsx'),
+        output: {
+            publicPath: '/',
+        },
         resolve: {
             extensions: ['.tsx', '.ts', '.js', '.jsx'],
             alias: {
@@ -85,6 +88,7 @@ module.exports = (env, {mode}) => {
             host: 'localhost',
             port: 3001,
             open: true,
+            historyApiFallback: true,
         },
     }
 }

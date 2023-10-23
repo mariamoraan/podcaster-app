@@ -16,6 +16,7 @@ const App = () => {
                 <Route path={POPULAR_PODCASTS} element={<PopularPodcasts />} />
                 <Route path={PODCAST_DETAIL} element={<PodcastDetail />} />
                 <Route path={EPISODE_DETAIL} element={<EpisodeDetail />} />
+                <Route path={POPULAR_PODCASTS} element={<PopularPodcasts />} />
             </Routes>
         </Router>
     )

@@ -28,7 +28,7 @@ const FilterWrapper = styled.div`
 const PodcastCounter = styled.span`
     padding: 2px 4px;
     background: var(--accent-color);
-    color: white;
+    color: var(--primary-light);
     border-radius: 12px;
 `
 

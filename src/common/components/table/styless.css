@@ -1,0 +1,32 @@
+table {
+    padding: 24px;
+    width: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.table > thead,
+.table > tbody  {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.table tr {
+    display: grid;
+    grid-template-rows: 1fr;
+    &:nth-child(even){
+        background-color: var(--primary-light-100);
+    }
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+    border-bottom: 1px solid var(--primary-light-300);
+}
+
+.table td {
+    border-bottom: 1px solid var(--primary-light-200);
+}
