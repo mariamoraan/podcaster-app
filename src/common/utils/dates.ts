@@ -12,11 +12,14 @@ export const olderThan24Hours = (timestamp: number) => {
 
 export const getReadableDate = (date: Date): string => {
     const currentDate = new Date(date);
-    return `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`
+    const dd = currentDate.getDate()
+    const mm = currentDate.getMonth() + 1
+    return `${dd < 10 ? `0${dd}` : dd}/${mm < 10 ? `0${mm}` : mm}/${currentDate.getFullYear()}`
 }
 
 export const millisecondsToSecondsAndMinutes = (milliseconds: number): string => {
-    const seconds = Math.trunc(milliseconds / 1000)
-    const minutes = Math.trunc(seconds / 60)
-    return `${minutes}:${seconds - minutes*60}`
+    const totalSeconds = Math.trunc(milliseconds / 1000)
+    const minutes = Math.trunc(totalSeconds / 60)
+    const seconds = totalSeconds - minutes*60
+    return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
 }
