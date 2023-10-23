@@ -31,7 +31,19 @@ npm run build
 ```
 
 ## Tests
-To run tests:
+### Unit tests
+To run unit tests:
 ```bash
 npm run test
 ```
+### E2E Tests
+To run E2E tests:
+1. Open terminal and run:
+```bash
+npx cypress open
+```
+
+2. When welcome cypress window is opened, click on E2E testing
+3. Choose Chrome as browser ans click on "Start E2E testing in Chrome"
+
+Now you can visually check each test by click on it.

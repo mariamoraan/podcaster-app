@@ -51,7 +51,7 @@ export const PodcastCard = (props: Props) => {
     const {title, author, imageUrl, id} = props;
 
     return (
-        <Wrapper to={buildPodcastDetailPath(id)}>
+        <Wrapper to={buildPodcastDetailPath(id)} className='podcast-card' >
             <Image src={imageUrl} />
             <DataWrapper>
                 <Title>{title}</Title>

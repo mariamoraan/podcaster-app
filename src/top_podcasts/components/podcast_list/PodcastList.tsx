@@ -53,15 +53,17 @@ export const PodcastsList = () => {
                     }}
                 />
             </FilterWrapper>
-            <ListWrapper>
+            <ListWrapper id="top-100-podcasts-list">
                 {
-                    filteredPodcasts.map((podcast) => <PodcastCard 
-                    key={podcast.id.attributes["im:id"]} 
-                    title={podcast.title.label} 
-                    author={podcast["im:artist"].label}
-                    imageUrl={podcast["im:image"][2].label}
-                    id={podcast.id.attributes["im:id"]}
-                    />)
+                    filteredPodcasts.map((podcast) => 
+                        <PodcastCard 
+                            key={podcast.id.attributes["im:id"]} 
+                            title={podcast.title.label} 
+                            author={podcast["im:artist"].label}
+                            imageUrl={podcast["im:image"][2].label}
+                            id={podcast.id.attributes["im:id"]}
+                        />
+                    )
                 }
             </ListWrapper>
         </Wrapper>

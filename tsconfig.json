@@ -11,7 +11,7 @@
       "allowJs": false,
       "preserveConstEnums": true,
       "removeComments": true,
-      "sourceMap": true,
+      "sourceMap": false,
       "skipLibCheck": true,
       "strictNullChecks": true,
       "esModuleInterop": true,
