@@ -16,7 +16,18 @@ const getPodcastDescription = (details: IEpisode): string => {
 
 const PodcastDetail = () => {
     const {podcastId} = useParams()
-    const {details, episodesNumber, episodes} = usePodcastDetails(podcastId || '');
+    const episodeDetails = usePodcastDetails(podcastId || '');
+    
+    if(!episodeDetails) {
+        return(
+            <Layout>
+                <p>No podcast found</p>
+            </Layout>
+        )
+    }
+
+    const {details, episodesNumber, episodes} = episodeDetails
+
     return (
         <Layout>
             <LateralBar

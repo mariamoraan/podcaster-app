@@ -1,12 +1,14 @@
 import { Loader } from "common/components/loader/Loader";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled(Link)`
     padding: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-decoration: none;
 `;
 
 const HeaderTitle = styled.p`
@@ -18,7 +20,7 @@ const HeaderTitle = styled.p`
 
 export const Header = () => {
     return (
-        <HeaderWrapper>
+        <HeaderWrapper to="/">
             <HeaderTitle>Podcaster</HeaderTitle>
             <Loader />
         </HeaderWrapper>

@@ -34,7 +34,6 @@ export const getLocalStoragePodcastsDetails = () => {
 
 export const getLocalStoragePodcastDetail = (podcastId: string) => {
     const localPodcastsDetails = getLocalStoragePodcastsDetails()
-    console.log(localPodcastsDetails)
     return localPodcastsDetails[podcastId]
 }
 
@@ -45,12 +44,13 @@ export const saveLocalStoragePodcastDetail = (podcastId: string, podcastDetail: 
     localStorage.setItem(LAST_REQUEST_PODCASTS_DETAIL, JSON.stringify(newLocalStoragePodcastDetail))
 }
 
-export const getPodcastDetails = async(podcastId: string): Promise<IPodcast> => {
+export const getPodcastDetails = async(podcastId: string): Promise<IPodcast|undefined> => {
     const localPodcastDetail = getLocalStoragePodcastDetail(podcastId)
     if (localPodcastDetail && !olderThan24Hours(localPodcastDetail.timestamp)) {
         return localPodcastDetail.podcastDetail
     } else {
         const podcastDetails = await fetchPodcastDetails(podcastId)
+        if(!podcastDetails || podcastDetails.resultCount <= 0) return 
         saveLocalStoragePodcastDetail(podcastId, podcastDetails)
         return podcastDetails
     }

@@ -36,7 +36,6 @@ const LateralBarTitle = () => {
         <div className="titleWrapper">
             <span className="title">{link ? <a href={link} className="link">{title}</a> : title}</span>
             <span className="subtitle">by {link ? <a href={link} className="link">{artists}</a> : artists}</span>
-            <span>{title}</span>
         </div>
     )
 }
