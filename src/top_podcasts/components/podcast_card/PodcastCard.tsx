@@ -47,7 +47,7 @@ interface Props {
     id: string,
 }
 
-export const PodcastCard = (props: Props) => {
+const PodcastCard = (props: Props) => {
     const {title, author, imageUrl, id} = props;
 
     return (
@@ -60,3 +60,5 @@ export const PodcastCard = (props: Props) => {
         </Wrapper>
     )
 }
+
+export default PodcastCard;

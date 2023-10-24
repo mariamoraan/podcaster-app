@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import styled from "styled-components";
 import { useFilterPodcast } from 'top_podcasts/hooks';
-import { PodcastCard } from '../podcast_card/PodcastCard';
+const LazyPodcastCard = lazy(() => import('../podcast_card/PodcastCard'));
+
 
 const Wrapper = styled.div`
     padding: 24px;
@@ -53,19 +54,21 @@ export const PodcastsList = () => {
                     }}
                 />
             </FilterWrapper>
-            <ListWrapper id="top-100-podcasts-list">
-                {
-                    filteredPodcasts.map((podcast) => 
-                        <PodcastCard 
-                            key={podcast.id.attributes["im:id"]} 
-                            title={podcast.title.label} 
-                            author={podcast["im:artist"].label}
-                            imageUrl={podcast["im:image"][2].label}
-                            id={podcast.id.attributes["im:id"]}
-                        />
-                    )
-                }
-            </ListWrapper>
+                <ListWrapper id="top-100-podcasts-list">
+                    <Suspense>
+                    {
+                        filteredPodcasts.map((podcast) => 
+                            <LazyPodcastCard 
+                                key={podcast.id.attributes["im:id"]} 
+                                title={podcast.title.label} 
+                                author={podcast["im:artist"].label}
+                                imageUrl={podcast["im:image"][2].label}
+                                id={podcast.id.attributes["im:id"]}
+                            />
+                        )
+                    }
+                    </Suspense>
+                </ListWrapper>
         </Wrapper>
     )
 }
