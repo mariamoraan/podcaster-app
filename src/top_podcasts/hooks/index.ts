@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Entry } from 'top_podcasts/models';
 import { getTop100Podcasts } from 'top_podcasts/services';
+import { ILoaderContext, LoaderContext } from '../../App';
 
 export const useGetTop100Podcasts = () => {
+    const { setIsLoading}: ILoaderContext = useContext(LoaderContext) as ILoaderContext;
     const [podcasts, setPodcasts] = useState<Entry[]>([])
     useEffect(() => {
         const getPodcasts = async() => {
             const podcasts = await getTop100Podcasts()
             setPodcasts(podcasts)
+            setIsLoading(false)
         }
-
+        setIsLoading(true)
         getPodcasts()
     }, [])
 

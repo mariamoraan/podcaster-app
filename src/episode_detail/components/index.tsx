@@ -8,9 +8,12 @@ import "./styless.css"
 
 const EpisodeDetail = () => {
     const {podcastId, episodeId} = useParams()
-    const {episodeDetail} = useGetEpisodeDetails(podcastId, episodeId)
-    console.log("episodeDetail")
-    console.log(episodeDetail)
+    const {episodeDetail, isLoading} = useGetEpisodeDetails(podcastId, episodeId)
+
+    if(isLoading) {
+        return <></>
+    }
+    
     if(!episodeDetail) {
         return (
             <Layout><p>Episode not found</p></Layout>
